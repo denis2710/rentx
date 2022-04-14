@@ -12,7 +12,7 @@ class CreateSpecificationController {
         try {
             createSpecificationUseCase.execute({name, description})
         } catch (error) {
-            return response.status(404).json({message: error.message})
+            return response.status(400).json({message: error.message})
         }
     
         return response.status(201).send()

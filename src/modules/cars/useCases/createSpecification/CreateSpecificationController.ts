@@ -4,13 +4,13 @@ import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 
 class CreateSpecificationController {
 
-    handle(request: Request, response: Response) {
+    async handle(request: Request, response: Response) {
         const {name, description} = request.body;
 
         const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase)
     
         try {
-            createSpecificationUseCase.execute({name, description})
+            await createSpecificationUseCase.execute({name, description})
         } catch (error) {
             return response.status(400).json({message: error.message})
         }

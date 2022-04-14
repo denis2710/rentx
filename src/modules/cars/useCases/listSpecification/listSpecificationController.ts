@@ -4,11 +4,11 @@ import { ListSpecificationUseCase } from "./listSpecificationUseCase";
 
 class ListSpecificationController {
 
-    handle(_request: Request, response: Response){ 
+    async handle(_request: Request, response: Response){ 
 
         const listSpecificationUseCase = container.resolve(ListSpecificationUseCase);
 
-        const all = listSpecificationUseCase.execute(); 
+        const all = await listSpecificationUseCase.execute(); 
 
         return response.json(all);
     }

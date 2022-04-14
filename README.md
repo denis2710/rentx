@@ -6,6 +6,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
+[![Licence][licence-shield]][licence-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
     
 </div>
@@ -177,6 +178,8 @@ Project Link: [https://github.com/denis2710/rentex](https://github.com/denis2710
 [forks-url]: https://github.com/denis2710/rentex/network/members
 [stars-shield]: https://img.shields.io/github/stars/denis2710/rentex
 [stars-url]: https://github.com/denis2710/rentex/stargazers
+[licence-shield]: https://img.shields.io/github/license/denis2710/rentex
+[licence-url]: https://github.com/denis2710/rentex/blob/master/LICENSE.txt
 [issues-shield]: https://img.shields.io/github/issues/denis2710/rentex
 [issues-url]: https://github.com/denis2710/rentex/issues
 

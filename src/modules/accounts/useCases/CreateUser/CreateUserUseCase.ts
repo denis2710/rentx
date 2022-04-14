@@ -1,24 +1,30 @@
 import { inject, injectable } from 'tsyringe';
 import { ICreateUserDto } from '../../dtos/ICreateUserDTO';
-import { UserRepository } from "../../repositories/implementations/UsersRepository";
+import { IUserRepository } from '../../repositories/IUserRepository';
 
 @injectable()
 class CreateUserUseCase { 
 
     constructor(
         @inject("UserRepository")
-        private userRepository: UserRepository
+        private userRepository: IUserRepository
     ){}
 
-    async exec(data: ICreateUserDto): Promise<void>{
+    async execute({name, email, password, username, driver_licence}: ICreateUserDto): Promise<void>{
 
-        const userAlreadyExists = await this.userRepository.findByUsername(data.username)
+        const userAlreadyExists = await this.userRepository.findByUsername(username);
 
         if(userAlreadyExists){ 
-            throw new Error(`User ${data.username} already exists`)
+            throw new Error(`User ${username} already exists`)
         }
 
-        await this.userRepository.create(data)
+        await this.userRepository.create({
+            name, 
+            email, 
+            password, 
+            username, 
+            driver_licence
+        })
 
     }
 }

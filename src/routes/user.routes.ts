@@ -1,10 +1,10 @@
-import express from 'express'
+import { Router } from 'express'
 import { CreateUserController } from '../modules/accounts/useCases/CreateUser/CreateUserController'
 
-const userRoutes = express.Router()
+const userRoutes = Router()
 
 const createUserController = new CreateUserController()
 
-userRoutes.post('/', createUserController.handle )
+userRoutes.post('/', createUserController.handle)
 
 export { userRoutes } 

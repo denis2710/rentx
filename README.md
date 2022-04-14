@@ -127,6 +127,7 @@ _For more examples, please refer to the [Documentation (comming soon)](https://e
 - [X] Add a Database
 - [X] Add a ORM System
 - [X] Refactor using a dependency injection system 
+- [ ] Create a usage documentation to project
 - [ ] Create all the user system 
   - [ ] Create models and UseCase 
 

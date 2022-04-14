@@ -18,12 +18,17 @@ class UserRepository implements IUserRepository {
             username, 
             email, 
             password, 
-            driver_licence
+            driver_licence,
+            is_admin: false
         })
 
         await this.repository.save(user)
     } 
 
+    async findByUsername(username: string): Promise<User> { 
+        const user = this.repository.findOneBy({username})
+        return user
+    }
     
 
 }

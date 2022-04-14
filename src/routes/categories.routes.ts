@@ -6,13 +6,13 @@ import { listCategoriesController } from '../modules/cars/useCases/listCategorie
 
 const categoriesRoutes = Router();
 
-const importCategoryController = new ImportCategoryController()
 
 const upload = multer({
     dest: './tmp', 
 
 })
 
+const importCategoryController = new ImportCategoryController()
 const createCategoryController = new CreateCategoryController()
 
 categoriesRoutes.post('/', (request, response) => {
@@ -23,6 +23,9 @@ categoriesRoutes.get('/', async (_request, response) => {
     return listCategoriesController.handle(_request, response)
 })
 
-categoriesRoutes.post('/import', upload.single("file"), importCategoryController.handle)
+categoriesRoutes.post(
+    '/import', 
+    upload.single("file"), importCategoryController.handle
+)
 
 export  { categoriesRoutes }

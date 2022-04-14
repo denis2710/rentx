@@ -1,0 +1,160 @@
+openapi: 3.0.0
+info:
+  title: Rentx Documentation
+  description: |+
+    This is a project made with Typescript and NodeJs. I make this project following the RocketSeat Ignite Courese. The proposal is to use all tecnology necessary to delivery a API to a rent car interprize.
+
+  version: 1.0.0-oas3
+  contact:
+    email: denispereiraalves@gmail.com
+    name: Denis Alves
+    url: https://www.linkedin.com/in/denis-alves/
+  license:
+    url: https://github.com/denis2710/rentx/blob/master/LICENSE.txt
+    name: MIT License
+paths:
+  /categories:
+    post:
+      tags:
+        - Category
+      summary: Create a new Category
+      description: Create a new car category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+              example:
+                name: Category name sample
+                description: Category description sample
+      responses:
+        '201':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            aplication/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 
+                example: 
+                  message: Category already exists 
+    get:
+      tags:
+        - Category
+      summary: List all categories
+      description: List all categories
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  description:
+                    type: string
+  /categories/import:
+    post:
+      tags:
+       - Category
+      summary: Import a file of category to the system
+      description: This api allows you to import a file to the system 
+      responses:
+        '201': 
+          description: Success
+  /specification: 
+    post:
+      tags: 
+        - Specification
+      summary: Create a specification of a vehicle
+      description: Create a specification of a vehicle
+      requestBody:
+        content: 
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+            example:
+              name: Category name sample
+              description: Category description sample
+      responses:
+        '201':
+          description: Success
+        '400':
+          description: Bad Request
+          content:
+            aplication/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string 
+                example: 
+                  message: Category already exists 
+    get: 
+      tags:
+        - Specification
+      summary: List all specifications of the system
+      description:  List all specifications of the system
+      responses: 
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  title: Specification
+                  description: a specification object
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      description: the object unic id 
+                    name: 
+                      type: string
+                      description: the specification name 
+                    description: 
+                      type: string
+                      description: the specification description 
+                    created_at: 
+                      type: string
+                      description: the date of creation of the specification 
+                example:
+                  - id: f9926ccc-a6b4-45a5-bbca-58d511b803e3
+                    name: Câmbio automático
+                    description: Categoria Carro com cambio automático
+                    created_at: '2022-04-14T12:20:03.851Z'
+                  - id: 2621e537-2dcb-4c3b-b12f-92d17bc3da06
+                    name: Direção Hidraulica
+                    description: Categoria Carro com direção hidraulica
+                    created_at: '2022-04-14T12:25:11.725Z'
+                  
+                  
+externalDocs:
+  description: "Project Documentation "
+  url: https://github.com/denis2710/rentx
+tags:
+  - name: Category
+    description: Routes related with category
+servers:
+  - url: http://localhost:{localPort}/
+    description: Local host server
+    variables:
+      localPort:
+        default: "3333"
+

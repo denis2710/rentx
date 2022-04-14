@@ -16,9 +16,7 @@ const importCategoryController = new ImportCategoryController()
 const createCategoryController = new CreateCategoryController()
 const listCategoriesController = new ListCategoryController()
 
-categoriesRoutes.post('/', (request, response) => {
-    return createCategoryController.handle(request, response)
-})  
+categoriesRoutes.post('/', createCategoryController.handle)  
 
 categoriesRoutes.get('/', listCategoriesController.handle)
 

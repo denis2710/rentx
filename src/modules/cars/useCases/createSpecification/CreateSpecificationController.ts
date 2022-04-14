@@ -1,14 +1,16 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { CreateSpecificationUseCase } from "./CreateSpecificationUseCase";
 
 class CreateSpecificationController {
-    constructor(private createSpecificationService: CreateSpecificationUseCase) {}
 
     handle(request: Request, response: Response) {
         const {name, description} = request.body;
+
+        const createSpecificationUseCase = container.resolve(CreateSpecificationUseCase)
     
         try {
-            this.createSpecificationService.execute({name, description})
+            createSpecificationUseCase.execute({name, description})
         } catch (error) {
             return response.status(404).json({message: error.message})
         }

@@ -12,20 +12,10 @@ class AuthenticateUserCotroller {
 
         const {email, password} = request.body;
 
-        try {
-            const token = await autenticateUserUseCase.execute({email, password})
-            return response.status(200).json(token)
-        } catch (error) {
-            let errorCode = 500; 
-
-            if(error.message.indexOf('invalid')){ 
-                errorCode = 401
-            }
-
-            return response.status(errorCode).json({error: error.message})
-
-
-        }
+        
+        const token = await autenticateUserUseCase.execute({email, password})
+        return response.status(200).json(token)
+    
 
 
     }

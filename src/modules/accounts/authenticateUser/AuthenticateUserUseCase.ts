@@ -1,3 +1,4 @@
+import { AppError } from './../../../erros/AppError';
 import { inject, injectable } from 'tsyringe';
 import { UserRepository } from "../repositories/implementations/UsersRepository";
 import {compare } from 'bcryptjs'
@@ -27,13 +28,13 @@ class AuthenticateUserUseCase {
        const user = await this.userRepository.findByEmail(email);
 
        if(!user){ 
-        throw new Error(`Email or password not invalid`)
+        throw new AppError(`Email or password not invalid`, 401 )
     }
 
        const passwordMatch = await compare(password, user.password)
 
        if(!passwordMatch){
-            throw new Error(`Email or password not invalid`)
+            throw new AppError(`Email or password not invalid`, 401)
        }
 
        const token = sign({},"162b9895e3757521261df8c930613ce9", {

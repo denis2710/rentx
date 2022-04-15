@@ -1,3 +1,4 @@
+import { AppError } from './../erros/AppError';
 import { container } from 'tsyringe';
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
@@ -13,7 +14,7 @@ export async function ensureAuthenticated(request: Request, response: Response, 
     const authHeader = request.headers.authorization
     
     if(!authHeader){ 
-        throw new Error('Token missing')
+        throw new AppError('Token missing', 401)
     }
 
     const [, token] = authHeader.split(" ")
@@ -24,13 +25,13 @@ export async function ensureAuthenticated(request: Request, response: Response, 
         const user = await usersRepository.findById(sub)
 
         if(!user){ 
-            throw new Error('User not found')
+            throw new AppError('User not found', 401)
         }
         
         Object.assign(response, {user})
 
     } catch (error) {
-        throw new Error('Invalid token')
+        throw new AppError('Invalid token', 401)
     }
 
     next()

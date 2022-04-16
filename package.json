@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts",
-    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
+    "test": "jest"
   },
   "dependencies": {
     "@types/swagger-ui-express": "^4.1.3",
@@ -41,6 +42,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.5.1",
     "prettier": "^2.6.0",
+    "ts-jest": "^27.1.4",
     "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.2"
   }

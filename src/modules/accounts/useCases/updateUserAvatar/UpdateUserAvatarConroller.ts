@@ -1,23 +1,22 @@
-import { Request, Response } from "express";
-import { container } from "tsyringe";
-import { UpdateUserAvatarUseCase } from "./UpdateUserAvatarUseCase";
+import { Request, Response } from 'express'
+import { container } from 'tsyringe'
 
-class UpdateUserAvatarContoller { 
+import { UpdateUserAvatarUseCase } from './UpdateUserAvatarUseCase'
 
-    async handle(request: Request, response: Response): Promise<Response> { 
+class UpdateUserAvatarContoller {
+  async handle(request: Request, response: Response): Promise<Response> {
+    const updateUserAvatarUseCase = container.resolve(UpdateUserAvatarUseCase)
 
-        const updateUserAvatarUseCase = container.resolve(UpdateUserAvatarUseCase)
+    const { id } = request.user
+    const avatar_file: string = request.file.filename
 
-        const {id} = request.user;
-        const avatar_file: any = request.file.filename;
+    await updateUserAvatarUseCase.execute({
+      user_id: id,
+      avatar_file,
+    })
 
-        await updateUserAvatarUseCase.execute({
-            user_id: id,
-            avatar_file
-        })
-
-        return response.status(204).send()
-    }
+    return response.status(204).send()
+  }
 }
 
 export { UpdateUserAvatarContoller }

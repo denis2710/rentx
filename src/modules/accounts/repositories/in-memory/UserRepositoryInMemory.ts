@@ -1,32 +1,35 @@
-import { ICreateUserDto } from "../../dtos/ICreateUserDTO";
-import { User } from "../../infra/typeorm/entities/User";
-import { IUserRepository } from "../IUserRepository";
+import { ICreateUserDto } from '../../dtos/ICreateUserDTO'
+import { User } from '../../infra/typeorm/entities/User'
+import { IUserRepository } from '../IUserRepository'
 
 class UsersRepositoryInMemory implements IUserRepository {
+  users: User[] = []
 
-    users: User[] = [];
+  async create({
+    driver_licence,
+    email,
+    name,
+    password,
+  }: ICreateUserDto): Promise<void> {
+    const user = new User()
 
-    async create({driver_licence, email, name, password}: ICreateUserDto): Promise<void> {
-        const user = new User(); 
+    Object.assign(user, {
+      driver_licence,
+      email,
+      name,
+      password,
+    })
 
-        Object.assign(user, {
-            driver_licence, 
-            email, 
-            name, 
-            password
-        });
+    this.users.push(user)
+  }
 
-        this.users.push(user);
-    }
+  async findByEmail(email: string): Promise<User> {
+    return this.users.find((u) => u.email === email)
+  }
 
-    async findByEmail(email: string): Promise<User> {
-        return this.users.find(u => u.email === email)
-    }
-
-    async findById(id: string): Promise<User> {
-        return this.users.find(u => u.id === id)
-    }
-    
- }
+  async findById(id: string): Promise<User> {
+    return this.users.find((u) => u.id === id)
+  }
+}
 
 export { UsersRepositoryInMemory }

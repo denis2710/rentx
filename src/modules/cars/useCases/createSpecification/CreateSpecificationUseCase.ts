@@ -1,30 +1,30 @@
-import { AppError } from '@shared/errors/AppError';
-import { inject, injectable } from "tsyringe";
-import { ISpecificationRepository } from "../../repositories/ISpecificationRepository";
+import { inject, injectable } from 'tsyringe'
+
+import { AppError } from '@shared/errors/AppError'
+
+import { ISpecificationRepository } from '../../repositories/ISpecificationRepository'
 
 interface IRequst {
-    name: string;
-    description: string;
+  name: string
+  description: string
 }
 @injectable()
 class CreateSpecificationUseCase {
+  constructor(
+    @inject('SpecificationsRepository')
+    private specificationsRepository: ISpecificationRepository
+  ) {}
 
-    constructor(
-        @inject("SpecificationsRepository")
-        private specificationsRepository: ISpecificationRepository
-    ){}
+  async execute({ name, description }: IRequst): Promise<void> {
+    const specificationAlreadyExists =
+      await this.specificationsRepository.findByName(name)
 
-    async execute({name, description}: IRequst) : Promise<void> {
-
-        const specificationAlreadyExists = await this.specificationsRepository.findByName(name)
-
-        if(specificationAlreadyExists){ 
-            throw new AppError(`Specification ${name} already exists`)
-        }
-
-        await this.specificationsRepository.create({name, description})
+    if (specificationAlreadyExists) {
+      throw new AppError(`Specification ${name} already exists`)
     }
-    
+
+    await this.specificationsRepository.create({ name, description })
+  }
 }
 
-export {CreateSpecificationUseCase}
+export { CreateSpecificationUseCase }

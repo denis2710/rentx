@@ -1,4 +1,4 @@
-import { AppError } from './../../../../erros/AppError';
+import { AppError } from '@errors/AppError';
 import { hash } from 'bcryptjs';
 import { inject, injectable } from 'tsyringe';
 import { ICreateUserDto } from '../../dtos/ICreateUserDTO';

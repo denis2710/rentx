@@ -1,3 +1,4 @@
+import { AppError } from '@errors/AppError';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors'
 import "reflect-metadata"
@@ -7,8 +8,7 @@ import YAML from 'yamljs';
 
 import './database'
 
-import './shared/container'
-import { AppError } from './erros/AppError';
+import '@shared/container'
 
 const app = express();
 

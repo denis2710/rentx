@@ -1,8 +1,8 @@
-import { AppError } from './../../../erros/AppError';
 import { inject, injectable } from 'tsyringe';
 import {compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken';
 import { IUserRepository } from '../repositories/IUserRepository';
+import { AppError } from '@errors/AppError';
 
 interface IRequest { 
     email: string;

@@ -17,6 +17,9 @@
       ],
       "@errors/*": [
         "erros/*"
+      ], 
+      "@middlewares/*": [
+        "middlewares/*"
       ]
     },
     "resolveJsonModule": true,

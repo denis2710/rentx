@@ -1,7 +1,7 @@
-import { Category } from "../../entites/Category"
-import { ICategoryRepository, ICreateCategoryDTO } from "../ICategoryRepository";
+import { Category } from "../entites/Category"
+import { ICategoryRepository, ICreateCategoryDTO } from "../../../repositories/ICategoryRepository";
 import { Repository } from "typeorm"
-import { appDataSource } from "../../../../database";
+import { appDataSource } from "@shared/infra/typeorm";
 
 
 class CategoriesRepository  implements ICategoryRepository {

@@ -1,4 +1,4 @@
-import { Category } from "../entites/Category";
+import { Category } from "../infra/typeorm/entites/Category";
 
 interface ICreateCategoryDTO {
     name: string;

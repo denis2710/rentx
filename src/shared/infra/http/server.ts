@@ -1,12 +1,12 @@
-import { AppError } from '@errors/AppError';
+import { AppError } from '@shared/errors/AppError';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors'
 import "reflect-metadata"
-import { router } from './routes';
+import { router } from '@shared/infra/http/routes';
 import swaggerUi from 'swagger-ui-express'
 import YAML from 'yamljs';
 
-import './database'
+import '@shared/infra/typeorm'
 
 import '@shared/container'
 
@@ -19,15 +19,6 @@ app.use(express.json());
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocumentation));
 
 app.use(router)
-
-app.get('/',( request, response) => {
-    return response.json({"msg" : "Hello"})
-})
-
-app.post('/courses', (req, res) => {
-    const {name} = req.body;
-    return res.json({name: name})
-})
 
 app.use((err: Error, _request: Request, response: Response, _next: NextFunction) => {
     if(err instanceof AppError) {

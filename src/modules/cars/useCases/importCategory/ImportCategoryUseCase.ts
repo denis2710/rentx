@@ -1,7 +1,7 @@
 import fs from 'fs'
 import {parse} from 'csv-parse'
 import { CreateCategoryUseCase } from '../createCategory/CreateCategoryUseCase';
-import { CategoriesRepository } from '../../repositories/implementations/CategoryRepository';
+import { CategoriesRepository } from '../../infra/typeorm/repositories/CategoryRepository';
 import { inject, injectable } from 'tsyringe';
 
 interface IImportCategory{ 

@@ -16,7 +16,7 @@
         "shared/*"
       ],
       "@errors/*": [
-        "erros/*"
+        "errors/*"
       ], 
       "@middlewares/*": [
         "middlewares/*"

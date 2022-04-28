@@ -1,8 +1,8 @@
-import { AppError } from '@errors/AppError';
-import { ICreateUserDto } from "../dtos/ICreateUserDTO";
-import { UsersRepositoryInMemory } from "../repositories/in-memory/UserRepositoryInMemory";
-import { IUserRepository } from "../repositories/IUserRepository";
-import { CreateUserUseCase } from "../useCases/CreateUser/CreateUserUseCase";
+import { AppError } from '@shared/errors/AppError';
+import { ICreateUserDto } from "../../dtos/ICreateUserDTO";
+import { UsersRepositoryInMemory } from "../../repositories/in-memory/UserRepositoryInMemory";
+import { IUserRepository } from "../../repositories/IUserRepository";
+import { CreateUserUseCase } from "../CreateUser/CreateUserUseCase";
 import { AuthenticateUserUseCase } from "./AuthenticateUserUseCase";
 
 describe("Authenticate User", () => {

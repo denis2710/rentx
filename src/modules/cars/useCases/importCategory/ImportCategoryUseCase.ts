@@ -55,7 +55,7 @@ class ImportCategoryUseCase {
 
     const categoriesAlreadyCreated = await Promise.all(categoriesPromises)
 
-    categories.map(({ name, description }) => {
+    categories.forEach(({ name, description }) => {
       const existCategory = categoriesAlreadyCreated.some(
         (c) => c.name === name
       )
@@ -63,8 +63,6 @@ class ImportCategoryUseCase {
       if (!existCategory) {
         this.createCategoryUseCase.execute({ name, description })
       }
-
-      return existCategory
     })
   }
 }

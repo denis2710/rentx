@@ -6,14 +6,16 @@ import { Specification } from '@modules/cars/infra/typeorm/entites/Specification
 
 const appDataSource = new DataSource({
   type: 'postgres',
-  host: 'database_ignite',
+  host: 'localhost',
   port: 5432,
   username: 'docker',
   password: 'ignite',
   database: 'rentx',
-  entities: [Category, Specification, User],
   synchronize: true,
   logging: false,
+  entities: [Category, Specification, User],
+  migrations: ['src/shared/infra/typeorm/migrations/*.ts'],
+  subscribers: [],
 })
 
 appDataSource

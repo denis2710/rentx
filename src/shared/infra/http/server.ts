@@ -1,6 +1,7 @@
+import 'reflect-metadata'
+
 import express, { Request, Response } from 'express'
 import 'express-async-errors'
-import 'reflect-metadata'
 import swaggerUi from 'swagger-ui-express'
 import YAML from 'yamljs'
 

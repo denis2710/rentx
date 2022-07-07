@@ -2,7 +2,6 @@
 
 ## Function Requirements
 - Should be possible registry a new Car
-- Should be possible list all categories
 
 ## Business Rules
 - Should not be possible registry a car with a car number allready existent.
@@ -13,6 +12,7 @@
 # Car list
 ## Function Requirements
 - Should be possible list all cars avalibles 
+- Should be possible list all cars
 - Should be possible list all disponible cars by the category name 
 - Should be possible list all disponible cars by the brand name 
 - Should be possible list all disponible cars by the car name 
